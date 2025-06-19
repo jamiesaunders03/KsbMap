@@ -1,7 +1,6 @@
 
 from dataclasses import dataclass
 from ksb_group import KsbGroup
-from learning_objective import LearningObjective
 
 
 @dataclass
@@ -14,9 +13,6 @@ class Skill:
 
     description: str
     """Description of the Skill"""
-
-    learning_objectives: list[LearningObjective]
-    """The relevant learning objectives"""
 
     def __hash__(self):
         return hash(self.code)

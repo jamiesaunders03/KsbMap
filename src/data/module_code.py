@@ -15,14 +15,14 @@ class ModuleCode(enum.Enum):
     DC2DSA = 10  # Data Structs
     DC2SEN = 11  # Software Eng
     DC2PLC = 12  # Programming Lang Concepts
-    DC203D = 13  # Intro to Business Economics
+    BS203D = 13  # Intro to Business Economics
     BN210D = 14  # Business Analytics
     DC2SAN = 15  # Software Analytics
     BF202D = 16  # Intro to Accounting
     DC3IPR = 17  # Individual Project
     DC3ISC = 18  # Info Security
     DC3DMN = 19  # Data Mining
-    DC3PSM = 20  # Software Proj Management
+    DC3SPM = 20  # Software Proj Management
     DC3IDG = 21  # Interaction Design
     BM305D = 22  # Strategic Management
     DC3ECS = 23  # Enterprise Computing Strategies
