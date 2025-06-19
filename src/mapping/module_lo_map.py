@@ -2,7 +2,7 @@
 from ..data.module_code import ModuleCode
 from ..data.learning_objective import LearningObjective
 
-module_map: list[(ModuleCode, LearningObjective)] = [
+module_map: list[tuple[ModuleCode, LearningObjective]] = [
     (ModuleCode.DC1PRP, LearningObjective.LO4_1),
     (ModuleCode.DC1PRP, LearningObjective.LO4_6),
     (ModuleCode.DC1PRP, LearningObjective.LO4_7),

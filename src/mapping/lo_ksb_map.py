@@ -1,10 +1,9 @@
 
 from ..data.learning_objective import LearningObjective
-from ..data.skill import Skill
 from ..data.skills import *
 
 
-skills: list[(LearningObjective, Skill)] = [
+skills: list[tuple[Skill, LearningObjective]] = [
     (s1, LearningObjective.LO4_1),
     (s1, LearningObjective.LO4_4),
     (s1, LearningObjective.LO5_1),

@@ -1,6 +1,6 @@
 
-from ksb_group import KsbGroup
-from skill import Skill
+from .ksb_group import KsbGroup
+from .skill import Skill
 
 
 s1 = Skill("S1", KsbGroup.CoreSkills, "Information Systems: is able to critically analyse a business domain in order to identify the role of information systems, highlight issues and identify opportunities for improvement through evaluating information systems in relation to their intended purpose and effectiveness.")

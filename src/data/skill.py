@@ -1,6 +1,6 @@
 
 from dataclasses import dataclass
-from ksb_group import KsbGroup
+from .ksb_group import KsbGroup
 
 
 @dataclass
