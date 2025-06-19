@@ -16,5 +16,5 @@ class ProgramModule:
         return hash(self.module_code)
 
     def __eq__(self, other):
-        return isinstance(other, ProgramModule) and self.module_code == other.code
+        return isinstance(other, ProgramModule) and self.module_code == other.module_code
 

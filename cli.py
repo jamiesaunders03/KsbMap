@@ -2,9 +2,9 @@ from src.lookup import mod_code_to_ksbs, filter_se_skills, filter_ba_skills
 from src.data.module_code import ModuleCode
 
 
-def _get_cli_args(args: list[tuple[str, str]]) -> dict[str, str]:
+def _get_cli_args(args: list[tuple[str, str]]) -> dict[str, object]:
     cli_args = dict(help=False, list=False, module="", filter="")
-    for opt, arg in optlist:
+    for opt, arg in args:
         if opt in ("-m", "--module"):
             cli_args["module"] = arg
         elif opt in ("-f", "--filter"):
@@ -50,7 +50,7 @@ def _search(mod_code: str, filter: str):
         raise ValueError("Please specify a module code")
 
     try:
-        mod = ModuleCode[cli_args["module"].upper()]
+        mod = ModuleCode[mod_code.upper()]
     except KeyError:
         raise ValueError(f"Unknown module code: {cli_args['module']}")
 
@@ -85,4 +85,4 @@ if __name__ == '__main__':
     elif cli_args["list"]:
         _list_all_modules()
     else:
-        _search(cli_args["module"], cli_args["filter"])
+        _search(str(cli_args["module"]), str(cli_args["filter"]))

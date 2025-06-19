@@ -1,6 +1,6 @@
 
 import re
-from typing import Callable
+from typing import Callable, Optional
 
 from .data.module_code import ModuleCode
 from .data.skill import Skill
@@ -8,7 +8,7 @@ from .mapping.lo_ksb_map import skills
 from .mapping.module_lo_map import module_map
 
 
-def mod_code_to_ksbs(mod_code: ModuleCode, filter: Callable[[list[Skill]], list[Skill]] = None) -> list[Skill]:
+def mod_code_to_ksbs(mod_code: ModuleCode, filter: Optional[Callable[[list[Skill]], list[Skill]]] = None) -> list[Skill]:
     """
     Gets all the skills associated with a given module code.
     :param mod_code: The module code to get skills for.
