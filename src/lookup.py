@@ -17,8 +17,8 @@ def mod_code_to_ksbs(mod_code: ModuleCode, filter: Callable[[list[Skill]], list[
     """
 
     los = [lo[1] for lo in module_map if lo[0] == mod_code]
-    mod_skills = list({s[0] for s in skills if s[1] in los})
-    _sort_skills(mod_skills)
+    mod_skills = [s[0] for s in skills if s[1] in los]
+    mod_skills = _get_unique(mod_skills)
 
     if filter is not None:
         mod_skills = filter(mod_skills)
@@ -40,11 +40,6 @@ def filter_ba_skills(skill_list: list[Skill]) -> list[Skill]:
     return [s for s in skill_list if not s.group.name.startswith('SE')]
 
 
-def _sort_skills(skill_list: list[Skill]):
-
-    skill_list.sort(key=lambda s: _get_skill_num(s.code))
-    skill_list.sort(key=lambda s: s.group.value)
-
-def _get_skill_num(skill_name: str) -> int:
-    mat = re.search("(\d+)$", skill_name)
-    return int(mat.group(1))
+def _get_unique(skill_list: list[Skill]) -> list[Skill]:
+    seen = set()
+    return [s for s in skill_list if not (s in seen or seen.add(s))]
