@@ -1,0 +1,306 @@
+
+from ..data.learning_objective import LearningObjective
+from ..data.skill import Skill
+from ..data.skills import *
+
+
+skills: list[(LearningObjective, Skill)] = [
+    (s1, LearningObjective.LO4_1),
+    (s1, LearningObjective.LO4_4),
+    (s1, LearningObjective.LO5_1),
+    (s1, LearningObjective.LO6_1),
+    (s1, LearningObjective.LO6_4),
+    (s1, LearningObjective.LO6_6),
+
+    (s2, LearningObjective.LO4_2),
+    (s2, LearningObjective.LO4_4),
+    (s2, LearningObjective.LO4_5),
+    (s2, LearningObjective.LO5_5),
+    (s2, LearningObjective.LO5_6),
+    (s2, LearningObjective.LO6_3),
+    (s2, LearningObjective.LO6_6),
+
+    (s3, LearningObjective.LO4_4),
+    (s3, LearningObjective.LO4_5),
+    (s3, LearningObjective.LO5_3),
+    (s3, LearningObjective.LO5_4),
+    (s3, LearningObjective.LO6_1),
+    (s3, LearningObjective.LO6_4),
+
+    (s4, LearningObjective.LO6_1),
+    (s4, LearningObjective.LO6_6),
+
+    (s5, LearningObjective.LO6_4),
+    (s5, LearningObjective.LO6_6),
+    (s5, LearningObjective.LO6_7),
+
+    (s6, LearningObjective.LO4_1),
+    (s6, LearningObjective.LO4_4),
+    (s6, LearningObjective.LO5_5),
+    (s6, LearningObjective.LO5_6),
+    (s6, LearningObjective.LO6_3),
+
+    (s7, LearningObjective.LO4_3),
+    (s7, LearningObjective.LO6_1),
+
+    (t1, LearningObjective.LO4_1),
+    (t1, LearningObjective.LO5_1),
+    (t1, LearningObjective.LO6_7),
+
+    (t2, LearningObjective.LO4_1),
+    (t2, LearningObjective.LO6_7),
+
+    (t3, LearningObjective.LO4_2),
+    (t3, LearningObjective.LO4_5),
+    (t3, LearningObjective.LO5_5),
+    (t3, LearningObjective.LO5_6),
+    (t3, LearningObjective.LO6_3),
+    (t3, LearningObjective.LO6_4),
+    (t3, LearningObjective.LO6_6),
+
+    (t4, LearningObjective.LO5_8),
+
+    (t5, LearningObjective.LO5_3),
+    (t5, LearningObjective.LO6_4),
+
+    # About here I wished I make a quick function to read the copy-paste table
+    # text instead  of writing this all out manually
+    (t6, LearningObjective.LO4_3),
+    (t6, LearningObjective.LO6_1),
+
+    (t7, LearningObjective.LO4_1),
+    (t7, LearningObjective.LO5_5),
+    (t7, LearningObjective.LO5_6),
+    (t7, LearningObjective.LO6_4),
+    (t7, LearningObjective.LO6_7),
+
+    (t8, LearningObjective.LO5_1),
+    (t8, LearningObjective.LO6_4),
+    (t8, LearningObjective.LO6_7),
+
+    (t9, LearningObjective.LO4_1),
+    (t9, LearningObjective.LO4_2),
+    (t9, LearningObjective.LO4_4),
+    (t9, LearningObjective.LO4_5),
+    (t9, LearningObjective.LO5_5),
+    (t9, LearningObjective.LO6_4),
+    (t9, LearningObjective.LO6_6),
+
+    (t10, LearningObjective.LO4_1),
+    (t10, LearningObjective.LO4_2),
+    (t10, LearningObjective.LO5_5),
+    (t10, LearningObjective.LO5_6),
+    (t10, LearningObjective.LO6_4),
+    (t10, LearningObjective.LO6_7),
+
+    (b1, LearningObjective.LO4_1),
+    (b1, LearningObjective.LO4_6),
+
+    (b2, LearningObjective.LO4_1),
+    (b2, LearningObjective.LO4_6),
+
+    (b3, LearningObjective.LO5_8),
+    (b4, LearningObjective.LO5_8),
+    (b5, LearningObjective.LO5_8),
+    (b6, LearningObjective.LO5_8),
+
+    (b7, LearningObjective.LO4_1),
+    (b7, LearningObjective.LO4_2),
+    (b7, LearningObjective.LO4_3),
+    (b7, LearningObjective.LO4_4),
+    (b7, LearningObjective.LO4_5),
+    (b7, LearningObjective.LO5_3),
+    (b7, LearningObjective.LO5_4),
+    (b7, LearningObjective.LO5_5),
+    (b7, LearningObjective.LO5_6),
+    (b7, LearningObjective.LO6_1),
+    (b7, LearningObjective.LO6_4),
+    (b7, LearningObjective.LO6_6),
+    (b7, LearningObjective.LO6_7),
+
+    (b8, LearningObjective.LO4_4),
+    (b8, LearningObjective.LO5_8),
+
+    (b9, LearningObjective.LO6_2),
+    (b9, LearningObjective.LO6_5),
+
+    (b10, LearningObjective.LO4_7),
+    (b10, LearningObjective.LO5_2),
+    (b10, LearningObjective.LO5_5),
+    (b10, LearningObjective.LO5_7),
+    (b10, LearningObjective.LO5_8),
+
+    (b11, LearningObjective.LO4_2),
+    (b11, LearningObjective.LO4_7),
+    (b11, LearningObjective.LO5_8),
+
+    (b12, LearningObjective.LO4_2),
+    (b12, LearningObjective.LO4_7),
+    (b12, LearningObjective.LO5_8),
+
+    (b13, LearningObjective.LO4_1),
+    (b13, LearningObjective.LO4_2),
+    (b13, LearningObjective.LO4_3),
+    (b13, LearningObjective.LO4_4),
+    (b13, LearningObjective.LO4_5),
+    (b13, LearningObjective.LO4_7),
+    (b13, LearningObjective.LO5_3),
+    (b13, LearningObjective.LO5_4),
+    (b13, LearningObjective.LO5_5),
+    (b13, LearningObjective.LO5_6),
+    (b13, LearningObjective.LO5_7),
+    (b13, LearningObjective.LO6_1),
+    (b13, LearningObjective.LO6_6),
+    (b13, LearningObjective.LO6_7),
+
+    (b14, LearningObjective.LO4_1),
+    (b14, LearningObjective.LO4_2),
+    (b14, LearningObjective.LO4_3),
+    (b14, LearningObjective.LO4_4),
+    (b14, LearningObjective.LO4_5),
+    (b14, LearningObjective.LO4_7),
+    (b14, LearningObjective.LO5_3),
+    (b14, LearningObjective.LO5_4),
+    (b14, LearningObjective.LO5_5),
+    (b14, LearningObjective.LO5_6),
+    (b14, LearningObjective.LO6_1),
+    (b14, LearningObjective.LO6_2),
+    (b14, LearningObjective.LO6_4),
+    (b14, LearningObjective.LO6_6),
+    (b14, LearningObjective.LO6_7),
+
+    (se_s1, LearningObjective.LO4_2),
+    (se_s1, LearningObjective.LO4_3),
+    (se_s1, LearningObjective.LO5_5),
+    (se_s1, LearningObjective.LO6_1),
+    (se_s1, LearningObjective.LO6_3),
+    (se_s1, LearningObjective.LO6_6),
+
+    (se_s2, LearningObjective.LO4_2),
+    (se_s2, LearningObjective.LO4_4),
+    (se_s2, LearningObjective.LO4_5),
+    (se_s2, LearningObjective.LO5_5),
+    (se_s2, LearningObjective.LO5_6),
+    (se_s2, LearningObjective.LO6_1),
+    (se_s2, LearningObjective.LO6_6),
+
+    (se_s3, LearningObjective.LO4_2),
+    (se_s3, LearningObjective.LO4_3),
+    (se_s3, LearningObjective.LO6_3),
+
+    (se_s4, LearningObjective.LO4_2),
+    (se_s4, LearningObjective.LO5_5),
+
+    (se_s5, LearningObjective.LO4_2),
+    (se_s5, LearningObjective.LO5_5),
+
+    (se_s6, LearningObjective.LO4_2),
+    (se_s6, LearningObjective.LO5_5),
+    (se_s6, LearningObjective.LO6_3),
+    (se_s6, LearningObjective.LO6_6),
+
+    (se_t1, LearningObjective.LO4_2),
+    (se_t1, LearningObjective.LO4_5),
+    (se_t1, LearningObjective.LO5_5),
+
+    (se_t2, LearningObjective.LO5_8),
+
+    (se_t3, LearningObjective.LO4_2),
+    (se_t3, LearningObjective.LO4_4),
+    (se_t3, LearningObjective.LO4_5),
+    (se_t3, LearningObjective.LO5_5),
+    (se_t3, LearningObjective.LO5_6),
+    (se_t3, LearningObjective.LO6_6),
+
+    (se_t4, LearningObjective.LO4_2),
+    (se_t4, LearningObjective.LO4_3),
+    (se_t4, LearningObjective.LO4_5),
+    (se_t4, LearningObjective.LO5_5),
+    (se_t4, LearningObjective.LO6_1),
+    (se_t4, LearningObjective.LO6_6),
+
+    (se_t5, LearningObjective.LO4_1),
+    (se_t5, LearningObjective.LO4_5),
+    (se_t5, LearningObjective.LO5_5),
+
+    (se_t6, LearningObjective.LO4_2),
+    (se_t6, LearningObjective.LO4_3),
+    (se_t6, LearningObjective.LO4_4),
+    (se_t6, LearningObjective.LO5_5),
+    (se_t6, LearningObjective.LO6_3),
+    (se_t6, LearningObjective.LO6_6),
+
+    (ba_s1, LearningObjective.LO4_1),
+    (ba_s1, LearningObjective.LO4_4),
+    (ba_s1, LearningObjective.LO4_5),
+    (ba_s1, LearningObjective.LO5_4),
+    (ba_s1, LearningObjective.LO5_6),
+    (ba_s1, LearningObjective.LO6_4),
+    (ba_s1, LearningObjective.LO6_6),
+
+    (ba_s2, LearningObjective.LO4_1),
+    (ba_s2, LearningObjective.LO4_4),
+    (ba_s2, LearningObjective.LO5_3),
+    (ba_s2, LearningObjective.LO6_4),
+
+    (ba_s3, LearningObjective.LO4_1),
+    (ba_s3, LearningObjective.LO4_4),
+    (ba_s3, LearningObjective.LO6_4),
+    (ba_s3, LearningObjective.LO6_6),
+
+    (ba_s4, LearningObjective.LO4_1),
+    (ba_s4, LearningObjective.LO4_4),
+    (ba_s4, LearningObjective.LO5_4),
+    (ba_s4, LearningObjective.LO6_4),
+    (ba_s4, LearningObjective.LO6_6),
+
+    (ba_s5, LearningObjective.LO4_1),
+    (ba_s5, LearningObjective.LO4_4),
+    (ba_s5, LearningObjective.LO6_4),
+    (ba_s5, LearningObjective.LO6_6),
+
+    (ba_s6, LearningObjective.LO4_1),
+    (ba_s6, LearningObjective.LO4_4),
+    (ba_s6, LearningObjective.LO5_4),
+    (ba_s6, LearningObjective.LO6_4),
+    (ba_s6, LearningObjective.LO6_6),
+
+    (ba_t1, LearningObjective.LO4_1),
+    (ba_t1, LearningObjective.LO4_4),
+    (ba_t1, LearningObjective.LO5_3),
+
+    (ba_t2, LearningObjective.LO4_1),
+    (ba_t2, LearningObjective.LO4_4),
+    (ba_t2, LearningObjective.LO5_3),
+    (ba_t2, LearningObjective.LO5_5),
+
+    (ba_t3, LearningObjective.LO4_1),
+    (ba_t3, LearningObjective.LO4_5),
+    (ba_t3, LearningObjective.LO5_1),
+    (ba_t3, LearningObjective.LO5_5),
+    (ba_t3, LearningObjective.LO6_4),
+    (ba_t3, LearningObjective.LO6_6),
+
+    (ba_t4, LearningObjective.LO4_1),
+    (ba_t4, LearningObjective.LO4_4),
+    (ba_t4, LearningObjective.LO5_3),
+    (ba_t4, LearningObjective.LO5_4),
+    (ba_t4, LearningObjective.LO5_5),
+    (ba_t4, LearningObjective.LO6_6),
+
+    (ba_t5, LearningObjective.LO4_1),
+    (ba_t5, LearningObjective.LO4_5),
+    (ba_t5, LearningObjective.LO5_4),
+    (ba_t5, LearningObjective.LO5_6),
+    (ba_t5, LearningObjective.LO6_4),
+    (ba_t5, LearningObjective.LO6_6),
+    (ba_t5, LearningObjective.LO6_7),
+
+    (ba_t6, LearningObjective.LO4_1),
+    (ba_t6, LearningObjective.LO4_5),
+    (ba_t6, LearningObjective.LO5_1),
+    (ba_t6, LearningObjective.LO5_5),
+    (ba_t6, LearningObjective.LO5_6),
+    (ba_t6, LearningObjective.LO6_4),
+    (ba_t6, LearningObjective.LO6_6),
+]
