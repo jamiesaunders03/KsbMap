@@ -2,6 +2,10 @@ from src.lookup import mod_code_to_ksbs, filter_se_skills, filter_ba_skills
 from src.data.module_code import ModuleCode
 
 
+from itertools import islice
+from typing import Iterable
+
+
 def _get_cli_args(args: list[tuple[str, str]]) -> dict[str, object]:
     cli_args = dict(help=False, list=False, module="", filter="")
     for opt, arg in args:
@@ -66,9 +70,29 @@ def _search(mod_code: str, filter: str):
 
     print("Code    | Group                     | Description")
     print("        |                           |")
-    for skill in skills:
-        print(f"{skill.code:<8}| {skill.group.name:<25} | {skill.description}")
 
+    line_wrap = '\n' + ' ' * 38
+    for skill in skills:
+        desc: str = line_wrap.join(_batched(skill.description, 140))
+        print(f"{skill.code:<8}| {skill.group.name:<25} | {desc}")
+
+
+def _batched(string: str, max_len: int) -> list[str]:
+    """Split string into max length lines"""
+    words: list[str] = string.split(" ")
+    lines: list[str] = []
+
+    line = ""
+    for word in words:
+        if len(word) + len(line) > max_len and line != "":
+            lines.append(line)
+            line = word
+        else:
+            line += f"{word} "
+
+    if len(line) > 0:
+        lines.append(line)
+    return lines
 
 if __name__ == '__main__':
     import getopt
