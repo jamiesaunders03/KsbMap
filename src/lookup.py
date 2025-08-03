@@ -26,6 +26,18 @@ def mod_code_to_ksbs(mod_code: ModuleCode, filter: Optional[Callable[[list[Skill
     return mod_skills
 
 
+def get_all_ksbs(filter: Optional[Callable[[list[Skill]], list[Skill]]] = None) -> list[Skill]:
+    los = [lo[1] for lo in module_map]
+    print(len(los))
+    mod_skills = [s[0] for s in skills if s[1] in los]
+    mod_skills = _get_unique(mod_skills)
+
+    if filter is not None:
+        mod_skills = filter(mod_skills)
+
+    return mod_skills
+
+
 def filter_se_skills(skill_list: list[Skill]) -> list[Skill]:
     """
     Returns a list of all skills passed in, except for ones that are for Business Analysts

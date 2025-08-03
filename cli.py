@@ -1,13 +1,12 @@
-from src.lookup import mod_code_to_ksbs, filter_se_skills, filter_ba_skills
+from src.lookup import mod_code_to_ksbs, get_all_ksbs, filter_se_skills, filter_ba_skills
 from src.data.module_code import ModuleCode
+from src.data.skill import Skill
 
-
-from itertools import islice
-from typing import Iterable
+from typing import Optional, Callable
 
 
 def _get_cli_args(args: list[tuple[str, str]]) -> dict[str, object]:
-    cli_args = dict(help=False, list=False, module="", filter="")
+    cli_args = dict(help=False, list=False, all=False, module="", filter="")
     for opt, arg in args:
         if opt in ("-m", "--module"):
             cli_args["module"] = arg
@@ -17,6 +16,8 @@ def _get_cli_args(args: list[tuple[str, str]]) -> dict[str, object]:
             cli_args["help"] = True
         elif opt in ("-l", "--list"):
             cli_args["list"] = True
+        elif opt in ("-a", "--all"):
+            cli_args["all"] = True
 
     return cli_args
 
@@ -34,6 +35,7 @@ def _help():
     print("\t-f|--filter=    [filter string]   Optional filter to only show either BA/SE skills, if this starts with ")
     print("\t                                  a 's', doesn't show BA only skills. If it starts with a 'b', doesn't")
     print("\t                                  show SE only skills")
+    print("\t-a|--all                          List all skills for all modules, can be used with filter")
     print("")
     print("EXAMPLES")
     print("\tpython3 cli.py -m DC3IPR")
@@ -43,10 +45,32 @@ def _help():
     print("\t\tGet all skills that a software engineer should demonstrate during the team project module")
 
 
+def _get_filter_func(filter: str) -> Optional[Callable[[list[Skill]], list[Skill]]]:
+    filter_func = None
+    if filter.lower().startswith("s"):
+        filter_func = filter_se_skills
+    elif filter.startswith("b"):
+        filter_func = filter_ba_skills
+    elif filter != "":
+        print(f"Unknown filter modifier: {filter}, no filtering taking place")
+
+    return filter_func
+
+
 def _list_all_modules():
     print("MODULE LIST:")
     for mod in ModuleCode:
         print(f"    {mod.name}")
+
+
+def _get_all(filter: str):
+    filter_func = _get_filter_func(filter)
+
+    skills = get_all_ksbs(filter_func)
+    line_wrap = '\n' + ' ' * 38
+    for skill in skills:
+        desc: str = line_wrap.join(_batched(skill.description, 140))
+        print(f"{skill.code:<8}| {skill.group.name:<25} | {desc}")
 
 
 def _search(mod_code: str, filter: str):
@@ -58,14 +82,7 @@ def _search(mod_code: str, filter: str):
     except KeyError:
         raise ValueError(f"Unknown module code: {cli_args['module']}")
 
-    filter_func = None
-    if filter.lower().startswith("s"):
-        filter_func = filter_se_skills
-    elif filter.startswith("b"):
-        filter_func = filter_ba_skills
-    elif filter != "":
-        print(f"Unknown filter modifier: {filter}, no filtering taking place")
-
+    filter_func = _get_filter_func(filter)
     skills = mod_code_to_ksbs(mod, filter=filter_func)
 
     print("Code    | Group                     | Description")
@@ -98,8 +115,8 @@ if __name__ == '__main__':
     import getopt
     import sys
 
-    short_ops = "m:f:hl"
-    long_ops = ["module=", "filter=", "help", "list"]
+    short_ops = "m:f:hla"
+    long_ops = ["module=", "filter=", "help", "list", "all"]
 
     optlist, _ = getopt.getopt(sys.argv[1:], short_ops, long_ops)
     cli_args = _get_cli_args(optlist)
@@ -108,5 +125,7 @@ if __name__ == '__main__':
         _help()
     elif cli_args["list"]:
         _list_all_modules()
+    elif cli_args["all"]:
+        _get_all(str(cli_args["filter"]))
     else:
         _search(str(cli_args["module"]), str(cli_args["filter"]))
