@@ -28,7 +28,6 @@ def mod_code_to_ksbs(mod_code: ModuleCode, filter: Optional[Callable[[list[Skill
 
 def get_all_ksbs(filter: Optional[Callable[[list[Skill]], list[Skill]]] = None) -> list[Skill]:
     los = [lo[1] for lo in module_map]
-    print(len(los))
     mod_skills = [s[0] for s in skills if s[1] in los]
     mod_skills = _get_unique(mod_skills)
 
